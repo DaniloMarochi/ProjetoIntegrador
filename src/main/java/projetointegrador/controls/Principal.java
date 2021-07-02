@@ -2,6 +2,7 @@ package projetointegrador.controls;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import projetointegrador.Main;
 import projetointegrador.models.Cliente;
 import projetointegrador.repositories.interfaces.ClienteRepository;
 
@@ -11,7 +12,6 @@ public class Principal extends JanelaBase{
 
     @FXML
     private Button btJanelaCadastraCliente;
-
 
     @FXML
     private Button btJanelaCadastraArtesanato;
@@ -74,7 +74,7 @@ public class Principal extends JanelaBase{
 
     @FXML
     void abrirJanelaCadastraCliente() {
-
+        Main.mudaCena(Main.ADICIONARCLIENTE,(aClass) -> new AdicionarCliente(clienteRepository));
     }
 
     @FXML

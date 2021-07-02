@@ -45,6 +45,7 @@ public class AdicionarCliente extends JanelaBase{
 
     @FXML
     void adicionarCliente() {
+
         String nome = tfNome.getText();
         String telefone = tfTelefone.getText();
         String email = tfEmail.getText();
