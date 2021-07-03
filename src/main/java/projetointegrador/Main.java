@@ -62,7 +62,7 @@ public class Main extends Application {
         clienteRepository = new ClienteRepositoryImpl(clienteDAO);
 
         //Criando objetos temporários para teste
-        criaFakes();
+        //criaFakes();
     }
 
     @Override
