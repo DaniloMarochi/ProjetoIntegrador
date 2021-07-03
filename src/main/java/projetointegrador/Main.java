@@ -21,16 +21,18 @@ public class Main extends Application {
 
     public static final String PRINCIPAL = "/fxml/principal.fxml";
     public static final String ADICIONARCLIENTE = "/fxml/adicionar_cliente.fxml";
-    //public static final String ADICIONARINGREDIENTE = "/fxml/adicionar_ingrediente.fxml";
+    public static final String ADICIONARARTESANATO = "/fxml/adicionar_artesanato.fxml";
     //public static final String ADICIONARBEBIDA = "/fxml/adicionar_bebida.fxml";
     //public static final String ADICIONARACOMPANHAMENTO = "/fxml/adicionar_acompanhamento.fxml";
     //public static final String ADICIONARPEDIDO = "/fxml/adicionar_pedido.fxml";
 
 
     private static ClienteRepository clienteRepository;
+    private static ArtesanatoRepository artesanatoRepository;
 
 
     private static ClienteDAO clienteDAO;
+    private static ArtesanatoDAO artesanatoDAO;
 
 
     private static StackPane base;
@@ -57,9 +59,11 @@ public class Main extends Application {
         super.init();
 
         clienteDAO = new JDBCClienteDAO();
+        artesanatoDAO = new JDBCArtesanatoDAO();
 
 
         clienteRepository = new ClienteRepositoryImpl(clienteDAO);
+        artesanatoRepository = new ArtesanatoRepositoryImpl(artesanatoDAO);
 
         //Criando objetos temporários para teste
         //criaFakes();
@@ -71,7 +75,7 @@ public class Main extends Application {
 
 
         stage.setScene(new Scene(base, Region.USE_PREF_SIZE, Region.USE_PREF_SIZE));
-        stage.setTitle("Simulador de Vendinha Artesanato...");
+        stage.setTitle("Smart art");
 
 
         mudaCena(Main.PRINCIPAL, principalCallback());
@@ -92,7 +96,6 @@ public class Main extends Application {
 
             Parent novoRoot = loader.load();
 
-            //ja existe alguma coisa sendo mostrada, entao remover
             if (base.getChildren().stream().count() > 0) {
                 base.getChildren().remove(0);
             }
@@ -108,7 +111,7 @@ public class Main extends Application {
     }
 
     private static Callback principalCallback() {
-        return (aClass) -> new Principal(clienteRepository);
+        return (aClass) -> new Principal(clienteRepository, artesanatoRepository);
     }
 
 }

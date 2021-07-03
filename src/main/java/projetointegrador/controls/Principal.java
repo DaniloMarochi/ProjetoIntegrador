@@ -3,7 +3,9 @@ package projetointegrador.controls;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import projetointegrador.Main;
+import projetointegrador.models.Artesanato;
 import projetointegrador.models.Cliente;
+import projetointegrador.repositories.interfaces.ArtesanatoRepository;
 import projetointegrador.repositories.interfaces.ClienteRepository;
 
 import java.sql.SQLException;
@@ -22,8 +24,8 @@ public class Principal extends JanelaBase{
     @FXML
     private ListView<Cliente> lvClientes;
 
-    //@FXML
-    //private ListView<> lvArtesanato;
+    @FXML
+    private ListView<Artesanato> lvArtesanato;
 
     @FXML
     private TextField tfBuscaCliente;
@@ -33,10 +35,12 @@ public class Principal extends JanelaBase{
 
 
     private ClienteRepository clienteRepository;
+    private ArtesanatoRepository artesanatoRepository;
 
 
-    public Principal(ClienteRepository clienteRepository){
+    public Principal(ClienteRepository clienteRepository, ArtesanatoRepository artesanatoRepository){
         this.clienteRepository = clienteRepository;
+        this.artesanatoRepository = artesanatoRepository;
     }
 
 
@@ -46,6 +50,7 @@ public class Principal extends JanelaBase{
 
         try{
             lvClientes.setItems(clienteRepository.lista());
+            lvArtesanato.setItems(artesanatoRepository.lista());
         }catch (SQLException e){
             mostraMensagem(Alert.AlertType.ERROR, e.getMessage());
         }
@@ -65,11 +70,24 @@ public class Principal extends JanelaBase{
                 }
             }
         });
+
+        lvArtesanato.setCellFactory(artesanatoListView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Artesanato artesanato, boolean b) {
+                super.updateItem(artesanato, b);
+
+                if (artesanato != null) {
+                    setText(artesanato.getCategoria());
+                } else {
+                    setText("");
+                }
+            }
+        });
     }
 
     @FXML
     void abrirJanelaCadastraArtesanato() {
-
+        Main.mudaCena(Main.ADICIONARARTESANATO,(aClass) -> new AdicionarArtesanato(artesanatoRepository));
     }
 
     @FXML
@@ -88,6 +106,11 @@ public class Principal extends JanelaBase{
     }
 
     @FXML
+    void clienteSelecionado() {
+
+    }
+
+    @FXML
     void buscarArtesanato() {
 
     }
@@ -97,10 +120,6 @@ public class Principal extends JanelaBase{
 
     }
 
-    @FXML
-    void clienteSelecionado() {
-
-    }
 
 }
 

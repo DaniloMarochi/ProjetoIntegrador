@@ -27,6 +27,10 @@ public class Artesanato {
         this.estoque = estoque;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTamanho() {
         return tamanho;
     }
