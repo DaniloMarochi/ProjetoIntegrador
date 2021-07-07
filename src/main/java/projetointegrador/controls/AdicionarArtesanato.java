@@ -118,6 +118,8 @@ public class AdicionarArtesanato extends JanelaBase{
                 artesanatoRepository.editar(artesanatoOriginal.getId(),artesanato);
             }else{
                 artesanatoRepository.adicionar(artesanato);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Artesanato inserido com sucesso!!");
+                alert.showAndWait();
             }
         }catch (SQLException e){
             e.printStackTrace();

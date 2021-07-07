@@ -1,6 +1,7 @@
 package projetointegrador.daos.interfaces;
 
 import projetointegrador.models.Artesanato;
+import projetointegrador.models.Cliente;
 
 import java.sql.SQLException;
 import java.util.List;

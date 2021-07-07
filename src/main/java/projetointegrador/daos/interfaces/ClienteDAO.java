@@ -12,6 +12,7 @@ public interface ClienteDAO {
 
     List<Cliente> lista() throws SQLException;
     Cliente buscaId(int id) throws SQLException;
+    Cliente buscaClienteDaVenda(int venda_id_cliente) throws SQLException;
 
     boolean delete(Cliente cliente) throws SQLException;
 

@@ -22,33 +22,20 @@ public class Main extends Application {
     public static final String PRINCIPAL = "/fxml/principal.fxml";
     public static final String ADICIONARCLIENTE = "/fxml/adicionar_cliente.fxml";
     public static final String ADICIONARARTESANATO = "/fxml/adicionar_artesanato.fxml";
-    //public static final String ADICIONARBEBIDA = "/fxml/adicionar_bebida.fxml";
-    //public static final String ADICIONARACOMPANHAMENTO = "/fxml/adicionar_acompanhamento.fxml";
-    //public static final String ADICIONARPEDIDO = "/fxml/adicionar_pedido.fxml";
 
 
     private static ClienteRepository clienteRepository;
     private static ArtesanatoRepository artesanatoRepository;
+    private static ArtesanatoHasVendaRepository artesanatoHasVendaRepository;
+    private static VendaRepository vendaRepository;
 
 
     private static ClienteDAO clienteDAO;
     private static ArtesanatoDAO artesanatoDAO;
-
+    private static ArtesanatoHasVendaDAO artesanatoHasVendaDAO;
+    private static VendaDAO vendaDAO;
 
     private static StackPane base;
-
-
-    private static void criaFakes() {
-        try {
-            clienteRepository.adicionar(new Cliente("Cliente 1", "cliente@cliente1", "12341234", "endereco123,123"));
-            clienteRepository.adicionar(new Cliente("Cliente 2", "cliente@cliente2", "12341235", "endereco124,124"));
-            clienteRepository.adicionar(new Cliente("Cliente 3", "cliente@cliente3", "12341236", "endereco125,125"));
-            clienteRepository.adicionar(new Cliente("Cliente 4", "cliente@cliente4", "12341237", "endereco126,126"));
-            clienteRepository.adicionar(new Cliente("Cliente 5", "cliente@cliente5", "12341238", "endereco127,127"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -60,17 +47,19 @@ public class Main extends Application {
 
         clienteDAO = new JDBCClienteDAO();
         artesanatoDAO = new JDBCArtesanatoDAO();
+        artesanatoHasVendaDAO = new JDBCArtesanatoHasVendaDAO();
+        vendaDAO = new JDBCVendaDAO();
 
 
         clienteRepository = new ClienteRepositoryImpl(clienteDAO);
         artesanatoRepository = new ArtesanatoRepositoryImpl(artesanatoDAO);
+        vendaRepository = new VendaRepositoryImpl(vendaDAO);
+        artesanatoHasVendaRepository = new ArtesanatoHasVendaRepositoryImpl(artesanatoHasVendaDAO, vendaDAO, clienteDAO, artesanatoDAO);
 
-        //Criando objetos temporários para teste
-        //criaFakes();
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
         base = new StackPane();
 
 
@@ -111,7 +100,7 @@ public class Main extends Application {
     }
 
     private static Callback principalCallback() {
-        return (aClass) -> new Principal(clienteRepository, artesanatoRepository);
+        return (aClass) -> new Principal(clienteRepository, artesanatoRepository, artesanatoHasVendaRepository, vendaRepository);
     }
 
 }

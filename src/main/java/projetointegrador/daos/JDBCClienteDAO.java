@@ -12,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCClienteDAO implements ClienteDAO {
-    private static final String INSERT = "INSERT INTO cliente(nome,endereco,email, telefone) VALUES (?,?,?,?)";
+    private static final String INSERT = "INSERT INTO cliente(nome,endereco,email,telefone) VALUES (?,?,?,?)";
     private static final String LISTA = "SELECT * FROM cliente";
     private static final String UPDATE = "UPDATE cliente SET nome=?, endereco=?, email=?, telefone=? WHERE id_cliente=?";
     private static final String BUSCAID = "SELECT * FROM cliente WHERE id_cliente=?";
+    private static final String CLIENTEVENDA = "SELECT venda_id_venda FROM artesanato_has_venda WHERE venda_id_cliente=?";
 
     @Override
     public boolean inserir(Cliente cliente) throws SQLException {
@@ -106,6 +107,30 @@ public class JDBCClienteDAO implements ClienteDAO {
 
             cliente = new Cliente(nome, endereco, email, telefone);
 
+        }
+
+        rs.close();
+        pstmt.close();
+        conn.close();
+
+        return cliente;
+    }
+
+    @Override
+    public Cliente buscaClienteDaVenda(int venda_id_cliente) throws SQLException {
+        Cliente cliente = null;
+
+        Connection conn = FabricaConexoes.getConnection();
+
+        PreparedStatement pstmt = conn.prepareStatement(CLIENTEVENDA);
+        pstmt.setInt(1,venda_id_cliente);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if(rs.next()){
+            int id_cliente = rs.getInt("id_cliente");
+
+            cliente = buscaId(id_cliente);
         }
 
         rs.close();

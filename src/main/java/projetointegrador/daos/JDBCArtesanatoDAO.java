@@ -3,6 +3,7 @@ package projetointegrador.daos;
 import projetointegrador.daos.interfaces.ArtesanatoDAO;
 import projetointegrador.db.FabricaConexoes;
 import projetointegrador.models.Artesanato;
+import projetointegrador.models.Cliente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,10 +74,9 @@ public class JDBCArtesanatoDAO implements ArtesanatoDAO {
             String material = rs.getString("material");
             String categoria = rs.getString("categoria");
             Float valor = rs.getFloat("valor");
-            Integer estoque = rs.getInt("estoque");
+            int estoque = rs.getInt("estoque");
 
             Artesanato artesanato = new Artesanato(id, tamanho, material, categoria, valor, estoque);
-
             lista.add(artesanato);
         }
 

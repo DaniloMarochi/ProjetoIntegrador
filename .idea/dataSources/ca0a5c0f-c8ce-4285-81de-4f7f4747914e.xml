@@ -979,160 +979,142 @@ SELECT|sys.sys_config
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="301" parent="285" name="venda_id_cliente">
+    <column id="301" parent="285" name="id">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <index id="302" parent="285" name="fk_artesanato_has_venda_artesanato1_idx">
-      <ColNames>artesanato_id_artesanato</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="303" parent="285" name="fk_artesanato_has_venda_venda1_idx">
-      <ColNames>venda_id_venda
-venda_id_cliente</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="304" parent="285" name="PRIMARY">
+    <key id="302" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>artesanato_id_artesanato
+      <ColNames>id
 venda_id_venda
-venda_id_cliente</ColNames>
+artesanato_id_artesanato</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="305" parent="285" name="fk_artesanato_has_venda_artesanato1">
-      <ColNames>artesanato_id_artesanato</ColNames>
-      <RefTableName>artesanato</RefTableName>
-      <RefColNames>id_artesanato</RefColNames>
-    </foreign-key>
-    <foreign-key id="306" parent="285" name="fk_artesanato_has_venda_venda1">
-      <ColNames>venda_id_venda</ColNames>
-      <RefTableName>venda</RefTableName>
-      <RefColNames>id_venda</RefColNames>
-    </foreign-key>
-    <trigger id="307" parent="285" name="tgr1">
+    <trigger id="303" parent="285" name="tgr1">
       <SourceTextLength>176</SourceTextLength>
       <Definer>root@localhost</Definer>
       <Turn>after-row</Turn>
       <Events>I</Events>
     </trigger>
-    <column id="308" parent="286" name="id_cliente">
+    <column id="304" parent="286" name="id_cliente">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="309" parent="286" name="nome">
+    <column id="305" parent="286" name="nome">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="310" parent="286" name="endereco">
+    <column id="306" parent="286" name="endereco">
       <Position>3</Position>
       <DataType>varchar(145)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="311" parent="286" name="email">
+    <column id="307" parent="286" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="312" parent="286" name="telefone">
+    <column id="308" parent="286" name="telefone">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="313" parent="286" name="PRIMARY">
+    <key id="309" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_cliente</ColNames>
       <Primary>1</Primary>
     </key>
-    <trigger id="314" parent="286" name="trg2">
+    <trigger id="310" parent="286" name="trg2">
       <SourceTextLength>156</SourceTextLength>
       <Definer>root@localhost</Definer>
       <Turn>before-row</Turn>
       <Events>I</Events>
     </trigger>
-    <column id="315" parent="287" name="id_venda">
+    <column id="311" parent="287" name="id_venda">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="316" parent="287" name="qtd_artesanato">
+    <column id="312" parent="287" name="qtd_artesanato">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="317" parent="287" name="valor_total">
+    <column id="313" parent="287" name="valor_total">
       <Position>3</Position>
       <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="318" parent="287" name="id_cliente">
+    <column id="314" parent="287" name="id_cliente">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="287" name="id_artesanato">
+    <column id="315" parent="287" name="id_artesanato">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <index id="320" parent="287" name="fk_venda_cliente1_idx">
+    <index id="316" parent="287" name="fk_venda_cliente1_idx">
       <ColNames>id_cliente</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="321" parent="287" name="PRIMARY">
+    <key id="317" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_venda</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="322" parent="287" name="fk_venda_cliente1">
+    <foreign-key id="318" parent="287" name="fk_venda_cliente1">
       <ColNames>id_cliente</ColNames>
       <RefTableName>cliente</RefTableName>
       <RefColNames>id_cliente</RefColNames>
     </foreign-key>
-    <trigger id="323" parent="287" name="trg1">
+    <trigger id="319" parent="287" name="trg1">
       <SourceTextLength>148</SourceTextLength>
       <Definer>root@localhost</Definer>
       <Turn>before-row</Turn>
       <Events>I</Events>
     </trigger>
-    <argument id="324" parent="288">
+    <argument id="320" parent="288">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="325" parent="288" name="x">
+    <argument id="321" parent="288" name="x">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </argument>
-    <argument id="326" parent="288" name="delim">
+    <argument id="322" parent="288" name="delim">
       <Position>2</Position>
       <DataType>varchar(12)|0s</DataType>
     </argument>
-    <argument id="327" parent="288" name="pos">
+    <argument id="323" parent="288" name="pos">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="328" parent="289">
+    <argument id="324" parent="289">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>varchar(200)|0s</DataType>
     </argument>
-    <argument id="329" parent="289" name="nome">
+    <argument id="325" parent="289" name="nome">
       <Position>1</Position>
       <DataType>varchar(200)|0s</DataType>
     </argument>
-    <argument id="330" parent="290">
+    <argument id="326" parent="290">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="331" parent="290" name="valor_total">
+    <argument id="327" parent="290" name="valor_total">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="332" parent="291">
+    <argument id="328" parent="291">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>varchar(200)|0s</DataType>
     </argument>
-    <argument id="333" parent="291" name="nome">
+    <argument id="329" parent="291" name="nome">
       <Position>1</Position>
       <DataType>varchar(200)|0s</DataType>
     </argument>

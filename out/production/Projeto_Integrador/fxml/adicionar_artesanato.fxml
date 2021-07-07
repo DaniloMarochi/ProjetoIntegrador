@@ -13,83 +13,71 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetointegrador.controls.AdicionarArtesanato">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="86.0" percentWidth="0.0" prefWidth="86.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="514.0" minWidth="514.0" percentWidth="0.0" prefWidth="514.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="600.0" percentWidth="0.0" prefWidth="600.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="100.0" percentHeight="0.0" prefHeight="100.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Tamanho: " />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-         <children>
-            <Label text="Material: " />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
-         <children>
-            <Label text="Categoria: " />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
-         <children>
-            <Label text="Valor Unitário: " />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
-         <children>
-            <Label text="Qtd_artesanato: " />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-         <children>
             <RadioButton fx:id="rbPequeno" mnemonicParsing="false" selected="true" text="Pequeno">
                <toggleGroup>
                   <ToggleGroup fx:id="tamanho" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="rbMedio" mnemonicParsing="false" text="Médio" toggleGroup="$tamanho" />
-            <RadioButton fx:id="rbGrande" mnemonicParsing="false" text="Grande" toggleGroup="$tamanho" />
+            <RadioButton fx:id="rbMedio" mnemonicParsing="false" text="Médio" toggleGroup="$tamanho">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></RadioButton>
+            <RadioButton fx:id="rbGrande" mnemonicParsing="false" text="Grande" toggleGroup="$tamanho">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></RadioButton>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <TextField fx:id="tfMaterial" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" />
+            <Label text="Material: " />
+            <TextField fx:id="tfMaterial" maxHeight="25.0" maxWidth="208.0" minHeight="25.0" minWidth="208.0" prefHeight="25.0" prefWidth="208.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
+            <Label text="Categoria: " />
             <TextField fx:id="tfCategoria" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <TextField fx:id="tfValor" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0" />
+            <Label text="Valor Unitário: " />
+            <TextField fx:id="tfValor" maxHeight="25.0" maxWidth="178.0" minHeight="25.0" minWidth="178.0" prefHeight="25.0" prefWidth="178.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
-            <TextField fx:id="tfQuantidade" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0" />
+            <Label text="Qtd_artesanato: " />
+            <TextField fx:id="tfQuantidade" maxHeight="25.0" maxWidth="171.0" minHeight="25.0" minWidth="171.0" prefHeight="25.0" prefWidth="171.0" />
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
          <children>
             <Button fx:id="btVoltar" maxHeight="25.0" maxWidth="75.0" minHeight="25.0" minWidth="75.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="75.0" text="Voltar">
                <HBox.margin>
-                  <Insets left="130.0" top="38.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
             <Button fx:id="btAdicionarArtesanato" maxHeight="25.0" maxWidth="75.0" minHeight="25.0" minWidth="75.0" mnemonicParsing="false" onAction="#adicionarArtesanato" prefHeight="25.0" prefWidth="75.0" text="Adicionar">
                <HBox.margin>
-                  <Insets left="20.0" top="38.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </Button>
          </children>

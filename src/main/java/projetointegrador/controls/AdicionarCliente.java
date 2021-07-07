@@ -86,6 +86,8 @@ public class AdicionarCliente extends JanelaBase{
                 clienteRepository.editar(clienteOriginal.getId(),cliente);
             }else{
                 clienteRepository.adicionar(cliente);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Cliente inserido com sucesso!!");
+                alert.showAndWait();
             }
         }catch (SQLException e){
             e.printStackTrace();
