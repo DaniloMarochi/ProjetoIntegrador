@@ -22,6 +22,7 @@ public class Main extends Application {
     public static final String PRINCIPAL = "/fxml/principal.fxml";
     public static final String ADICIONARCLIENTE = "/fxml/adicionar_cliente.fxml";
     public static final String ADICIONARARTESANATO = "/fxml/adicionar_artesanato.fxml";
+    public static final String ALTERARCLIENTE = "/fxml/alterar_cliente.fxml";
 
 
     private static ClienteRepository clienteRepository;

@@ -73,7 +73,7 @@ public class JDBCClienteDAO implements ClienteDAO {
             String telefone = rs.getString("telefone");
             String email = rs.getString("email");
 
-            Cliente cliente = new Cliente(id, nome, endereco, email, telefone);
+            Cliente cliente = new Cliente(id, nome, email, telefone, endereco);
 
             lista.add(cliente);
         }
@@ -105,7 +105,7 @@ public class JDBCClienteDAO implements ClienteDAO {
             String telefone = rs.getString("telefone");
             String email = rs.getString("email");
 
-            cliente = new Cliente(nome, endereco, email, telefone);
+            cliente = new Cliente(nome, email, telefone, endereco);
 
         }
 

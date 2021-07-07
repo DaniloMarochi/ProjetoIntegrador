@@ -49,7 +49,7 @@
          </GridPane.margin>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <ListView fx:id="lvClientes" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ListView fx:id="lvClientes" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" onMouseClicked="#abrirJanelaAlterarCliente" prefHeight="250.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ListView fx:id="lvArtesanato" maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <GridPane GridPane.columnIndex="1">
         <columnConstraints>

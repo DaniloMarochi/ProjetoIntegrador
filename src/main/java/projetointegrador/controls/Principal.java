@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import org.w3c.dom.ls.LSOutput;
 import projetointegrador.Main;
 import projetointegrador.daos.JDBCArtesanatoDAO;
@@ -218,6 +219,18 @@ public class Principal extends JanelaBase{
     void emitirRelatorio() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION,vendaRepository.lista().toString());
         alert.showAndWait();
+    }
+
+    @FXML
+    void abrirJanelaAlterarCliente(MouseEvent event) throws SQLException{
+
+        if(event.getClickCount() == 2){
+
+            Cliente cliente = lvClientes.getSelectionModel().getSelectedItem();
+            if(cliente != null){
+                Main.mudaCena(Main.ALTERARCLIENTE,(aClass) -> new AlterarCliente(clienteRepository,cliente));
+            }
+        }
     }
 
 
