@@ -37,4 +37,9 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         this.clientes.addAll(clienteDAO.lista());
         return FXCollections.unmodifiableObservableList(clientes);
     }
+
+    @Override
+    public Cliente buscaId(int id) throws SQLException{
+        return clienteDAO.buscaId(id);
+    }
 }

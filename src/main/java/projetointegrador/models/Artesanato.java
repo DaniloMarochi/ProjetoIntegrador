@@ -73,13 +73,11 @@ public class Artesanato {
 
     @Override
     public String toString() {
-        return "Artesanato{" +
-                "id=" + id +
-                ", tamanho='" + tamanho + '\'' +
-                ", material='" + material + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", valor=" + valor +
-                ", estoque=" + estoque +
-                '}';
+        return
+                "Tamanho: " + tamanho +
+                "\nMaterial: " + material +
+                "\nCategoria: " + categoria +
+                "\nValor: " + valor +
+                "\nEstoque: " + estoque;
     }
 }

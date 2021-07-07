@@ -67,7 +67,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <TextField fx:id="tfBuscaCliente" onKeyPressed="#buscarArtesanato" />
+                  <TextField fx:id="tfBuscaCliente" onKeyPressed="#buscarCliente" />
                </children>
             </HBox>
          </children>

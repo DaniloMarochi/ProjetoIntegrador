@@ -10,6 +10,8 @@ public interface ClienteRepository {
     boolean adicionar(Cliente cliente) throws SQLException;
     boolean editar(int id, Cliente cliente) throws SQLException;
 
+    Cliente buscaId(int id) throws SQLException;
+
     ObservableList<Cliente> lista() throws SQLException;
 
 

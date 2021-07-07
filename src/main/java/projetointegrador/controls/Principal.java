@@ -1,7 +1,12 @@
 package projetointegrador.controls;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import org.w3c.dom.ls.LSOutput;
 import projetointegrador.Main;
 import projetointegrador.daos.JDBCArtesanatoDAO;
 import projetointegrador.daos.interfaces.ArtesanatoDAO;
@@ -14,9 +19,10 @@ import projetointegrador.repositories.interfaces.ArtesanatoRepository;
 import projetointegrador.repositories.interfaces.ClienteRepository;
 import projetointegrador.repositories.interfaces.VendaRepository;
 
-import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal extends JanelaBase{
     @FXML
@@ -66,7 +72,8 @@ public class Principal extends JanelaBase{
 
     @FXML
     private void initialize() {
-        inicializaListViews();
+        inicializaListViewsCliente();
+        inicializaListViewsArtesanato();
         try{
             lvClientes.setItems(clienteRepository.lista());
             lvArtesanato.setItems(artesanatoRepository.lista());
@@ -76,7 +83,7 @@ public class Principal extends JanelaBase{
     }
 
 
-    private void inicializaListViews() {
+    private void inicializaListViewsCliente() {
         lvClientes.setCellFactory(clienteListView -> new ListCell<>() {
             @Override
             protected void updateItem(Cliente cliente, boolean b) {
@@ -89,7 +96,9 @@ public class Principal extends JanelaBase{
                 }
             }
         });
+    }
 
+    private void inicializaListViewsArtesanato() {
         lvArtesanato.setCellFactory(artesanatoListView -> new ListCell<>() {
             @Override
             protected void updateItem(Artesanato artesanato, boolean b) {
@@ -103,6 +112,8 @@ public class Principal extends JanelaBase{
             }
         });
     }
+
+
 
     @FXML
     void abrirJanelaCadastraArtesanato() {
@@ -143,30 +154,64 @@ public class Principal extends JanelaBase{
 
 
     @FXML
-    void buscarArtesanato() {
+    void buscarArtesanato(KeyEvent event) throws SQLException{
 
-    }
-
-    @FXML
-    void buscarCliente() {
-
-        /*if(event.getKeyCode()==KeyEvent.VK_ENTER){
-            String client = tfBuscarArtesanato.getText();
-
-            lvClientes.setCellFactory(clienteListView -> new ListCell<>() {
+        if(event.getCode()==KeyCode.ENTER){
+            lvArtesanato.setCellFactory(artesanatoListView -> new ListCell<>() {
                 @Override
-                protected void updateItem(Cliente cliente, boolean b) {
-                    super.updateItem(cliente, b);
+                protected void updateItem(Artesanato artesanato, boolean b) {
+                    super.updateItem(artesanato, b);
 
-                    if (cliente != null) {
-                        setText(client);
+                    if (artesanato != null) {
+                        setText(artesanato.toString());
                     } else {
                         setText("");
                     }
                 }
             });
 
-        }*/
+            if(tfBuscarArtesanato.getText().equals("")) {
+                inicializaListViewsArtesanato();
+                lvArtesanato.setItems(artesanatoRepository.lista());
+            }else{
+                String id_arte = tfBuscarArtesanato.getText();
+                Artesanato artesanato = artesanatoRepository.buscaId(Integer.parseInt(id_arte));
+
+                ObservableList<Artesanato> art = FXCollections.observableArrayList(artesanato);
+                lvArtesanato.setItems(art);
+            }
+        }
+
+    }
+
+    @FXML
+    void buscarCliente(KeyEvent event) throws SQLException{
+
+        if(event.getCode()==KeyCode.ENTER){
+            lvClientes.setCellFactory(clienteListView -> new ListCell<>() {
+                @Override
+                protected void updateItem(Cliente cliente, boolean b) {
+                    super.updateItem(cliente, b);
+
+                    if (cliente != null) {
+                        setText(cliente.toString());
+                    } else {
+                        setText("");
+                    }
+                }
+            });
+
+            if(tfBuscaCliente.getText().equals("")) {
+                inicializaListViewsCliente();
+                lvClientes.setItems(clienteRepository.lista());
+            }else{
+                String id_client = tfBuscaCliente.getText();
+                Cliente cliente = clienteRepository.buscaId(Integer.parseInt(id_client));
+
+                ObservableList<Cliente> clt = FXCollections.observableArrayList(cliente);
+                lvClientes.setItems(clt);
+            }
+        }
     }
 
     @FXML

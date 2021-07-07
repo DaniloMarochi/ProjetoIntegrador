@@ -2,6 +2,7 @@ package projetointegrador.repositories;
 
 import projetointegrador.daos.interfaces.ArtesanatoDAO;
 import projetointegrador.models.Artesanato;
+import projetointegrador.models.Cliente;
 import projetointegrador.repositories.interfaces.ArtesanatoRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,5 +37,10 @@ public class ArtesanatoRepositoryImpl implements ArtesanatoRepository {
         this.artesanatos.clear();
         this.artesanatos.addAll(artesanatoDAO.lista());
         return FXCollections.unmodifiableObservableList(artesanatos);
+    }
+
+    @Override
+    public Artesanato buscaId(int id) throws SQLException{
+        return artesanatoDAO.buscaId(id);
     }
 }

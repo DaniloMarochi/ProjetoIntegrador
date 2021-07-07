@@ -11,6 +11,7 @@ public interface ArtesanatoRepository {
     boolean editar(int id, Artesanato artesanato) throws SQLException;
 
     ObservableList<Artesanato> lista() throws SQLException;
+    Artesanato buscaId(int id) throws SQLException;
 
 
 }
