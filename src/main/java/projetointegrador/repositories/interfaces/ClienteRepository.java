@@ -13,6 +13,7 @@ public interface ClienteRepository {
     Cliente buscaId(int id) throws SQLException;
 
     ObservableList<Cliente> lista() throws SQLException;
+    boolean excluir(int id) throws SQLException;
 
 
 }

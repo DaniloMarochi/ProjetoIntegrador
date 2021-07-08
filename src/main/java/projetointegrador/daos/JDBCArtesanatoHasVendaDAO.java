@@ -96,25 +96,6 @@ public class JDBCArtesanatoHasVendaDAO implements ArtesanatoHasVendaDAO {
     }
 
 
-    /*@Override
-    public double totalVendas() throws SQLException {
 
-        double totalPedidos = 0;
-
-        Connection conn = FabricaConexoes.getConnection();
-
-        CallableStatement cstmt = conn.prepareCall(TOTALPEDIDOS);
-
-        cstmt.registerOutParameter(1, Types.REAL);
-
-        cstmt.execute();
-
-        totalPedidos = cstmt.getDouble(1);
-
-        cstmt.close();
-        conn.close();
-
-        return totalPedidos;
-    }*/
 
 }

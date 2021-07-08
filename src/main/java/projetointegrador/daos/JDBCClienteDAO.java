@@ -17,6 +17,7 @@ public class JDBCClienteDAO implements ClienteDAO {
     private static final String UPDATE = "UPDATE cliente SET nome=?, endereco=?, email=?, telefone=? WHERE id_cliente=?";
     private static final String BUSCAID = "SELECT * FROM cliente WHERE id_cliente=?";
     private static final String CLIENTEVENDA = "SELECT venda_id_venda FROM artesanato_has_venda WHERE venda_id_cliente=?";
+    private static final String EXCLUIR = "DELETE FROM cliente WHERE id_cliente=?";
 
     @Override
     public boolean inserir(Cliente cliente) throws SQLException {
@@ -142,7 +143,19 @@ public class JDBCClienteDAO implements ClienteDAO {
 
 
     @Override
-    public boolean delete(Cliente Cliente) throws SQLException {
-        return false;
+    public boolean excluir(int id) throws SQLException {
+
+        Connection conn = FabricaConexoes.getConnection();
+
+        PreparedStatement pstmt = conn.prepareStatement(EXCLUIR);
+
+        pstmt.setInt(1,id);
+
+        int ret = pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+
+        return ret == 1;
     }
 }

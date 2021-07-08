@@ -17,6 +17,7 @@ public class JDBCArtesanatoDAO implements ArtesanatoDAO {
     private static final String LISTA = "SELECT * FROM artesanato";
     private static final String UPDATE = "UPDATE artesanato SET tamanho=?, material=?, categoria=?, valor=?, estoque=? WHERE id_artesanato=?";
     private static final String BUSCAID = "SELECT * FROM artesanato WHERE id_artesanato=?";
+    private static final String EXCLUIR = "DELETE FROM artesanato WHERE id_artesanato=?";
 
     @Override
     public boolean inserir(Artesanato artesanato) throws SQLException {
@@ -121,7 +122,19 @@ public class JDBCArtesanatoDAO implements ArtesanatoDAO {
 
 
     @Override
-    public boolean delete(Artesanato artesanato) throws SQLException {
-        return false;
+    public boolean excluir(int id) throws SQLException {
+
+        Connection conn = FabricaConexoes.getConnection();
+
+        PreparedStatement pstmt = conn.prepareStatement(EXCLUIR);
+
+        pstmt.setInt(1,id);
+
+        int ret = pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+
+        return ret == 1;
     }
 }

@@ -222,13 +222,25 @@ public class Principal extends JanelaBase{
     }
 
     @FXML
-    void abrirJanelaAlterarCliente(MouseEvent event) throws SQLException{
+    void abrirJanelaAlterarCliente(MouseEvent event){
 
         if(event.getClickCount() == 2){
 
             Cliente cliente = lvClientes.getSelectionModel().getSelectedItem();
             if(cliente != null){
                 Main.mudaCena(Main.ALTERARCLIENTE,(aClass) -> new AlterarCliente(clienteRepository,cliente));
+            }
+        }
+    }
+
+    @FXML
+    void abrirJanelaAlterarArtesanato(MouseEvent event){
+
+        if(event.getClickCount() == 2){
+
+            Artesanato artesanato = lvArtesanato.getSelectionModel().getSelectedItem();
+            if(artesanato != null){
+                Main.mudaCena(Main.ALTERARARTESANATO,(aClass) -> new AlterarArtesanato(artesanatoRepository,artesanato));
             }
         }
     }

@@ -42,4 +42,9 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     public Cliente buscaId(int id) throws SQLException{
         return clienteDAO.buscaId(id);
     }
+
+    @Override
+    public boolean excluir(int id) throws SQLException {
+        return clienteDAO.excluir(id);
+    }
 }

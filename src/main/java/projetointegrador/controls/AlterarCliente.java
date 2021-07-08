@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import projetointegrador.Main;
+import projetointegrador.daos.JDBCClienteDAO;
 import projetointegrador.models.Cliente;
 import projetointegrador.repositories.interfaces.ClienteRepository;
 
@@ -102,8 +103,8 @@ public class AlterarCliente extends JanelaBase{
     }
 
     @FXML
-    void deletarCliente() {
-
+    void deletarCliente() throws SQLException {
+        clienteRepository.excluir(clienteOriginal.getId());
     }
 
     @FXML

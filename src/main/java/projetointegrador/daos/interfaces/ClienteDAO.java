@@ -14,6 +14,6 @@ public interface ClienteDAO {
     Cliente buscaId(int id) throws SQLException;
     Cliente buscaClienteDaVenda(int venda_id_cliente) throws SQLException;
 
-    boolean delete(Cliente cliente) throws SQLException;
+    boolean excluir(int id) throws SQLException;
 
 }

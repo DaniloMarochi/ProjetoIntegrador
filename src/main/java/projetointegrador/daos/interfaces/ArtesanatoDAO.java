@@ -14,6 +14,6 @@ public interface ArtesanatoDAO {
     List<Artesanato> lista() throws SQLException;
     Artesanato buscaId(int id) throws SQLException;
 
-    boolean delete(Artesanato artesanato) throws SQLException;
+    boolean excluir(int id) throws SQLException;
 
 }

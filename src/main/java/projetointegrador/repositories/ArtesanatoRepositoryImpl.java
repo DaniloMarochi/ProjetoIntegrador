@@ -43,4 +43,9 @@ public class ArtesanatoRepositoryImpl implements ArtesanatoRepository {
     public Artesanato buscaId(int id) throws SQLException{
         return artesanatoDAO.buscaId(id);
     }
+
+    @Override
+    public boolean excluir(int id) throws SQLException {
+        return artesanatoDAO.excluir(id);
+    }
 }
